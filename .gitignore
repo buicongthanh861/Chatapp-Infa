@@ -1,1 +1,13 @@
 *-secret.yaml
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Terraform lock
+.terraform.lock.hcl
+
+# Variables
+*.tfvars
+*.tfvars.json
