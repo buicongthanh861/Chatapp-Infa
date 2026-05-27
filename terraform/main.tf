@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">=1.5.0"
+
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
 provider "aws" {
   region = "ap-southeast-1"
 }
@@ -10,7 +20,7 @@ module "vpc" {
   cidr = "10.0.0.0/16"
 
   azs = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
-  public_subnets = ["10.0.1.0/24","10.0.2.0/24","10.0.3 .0/24"]
+  public_subnets = ["10.0.1.0/24","10.0.2.0/24","10.0.3.0/24"]
 
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -55,6 +65,6 @@ module "ec2" {
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   associate_public_ip_address = true
 
-  key_name = "devops-key"
+  key_name = "devops-demo-1"
 
 }
