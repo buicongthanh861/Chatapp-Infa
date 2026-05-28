@@ -4,6 +4,7 @@ metadata:
   name: frontend-deployment
   namespace: frontend
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: frontend
@@ -31,14 +32,14 @@ spec:
           value: "http://backend.chatapp.com"
         readinessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 80
-          initialDelaySeconds: 10
+          initialDelaySeconds: 15
           periodSeconds: 5
         livenessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 80
-          initialDelaySeconds: 10
+          initialDelaySeconds: 15
           periodSeconds: 5
 
