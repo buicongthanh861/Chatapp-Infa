@@ -12,6 +12,8 @@ spec:
       labels:
         app: frontend
     spec:
+      imagePullSecrets:
+      - name: ecr-secret
       containers:
       - name: frontend
         image: 159749281332.dkr.ecr.ap-southeast-1.amazonaws.com/project-aws-gitops-frontend:latest
