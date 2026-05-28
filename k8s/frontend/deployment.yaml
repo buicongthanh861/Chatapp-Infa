@@ -29,7 +29,7 @@ spec:
         - containerPort: 80
         env:
         - name: BACKEND_URL
-          value: "http://backend.chatapp.com"
+          value: "http://backend-service.backend.svc.cluster.local:3001"
         readinessProbe:
           httpGet:
             path: /
