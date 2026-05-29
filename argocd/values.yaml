@@ -1,0 +1,14 @@
+global:
+  domain: argocd.chatapp.com
+
+configs:
+  params:
+    server.insecure: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+
+    hosts:
+      - argocd.chatapp.com
