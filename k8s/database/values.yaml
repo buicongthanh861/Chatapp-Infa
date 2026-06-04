@@ -1,0 +1,31 @@
+namespace: backend
+
+image:
+  repository: mysql
+  tag: "5.7"
+
+replicaCount: 2
+
+containerPort: 3306
+
+service:
+  name: database-service
+  type: ClusterIP
+  port: 3306
+  targetPort: 3306
+
+storage:
+  size: 2Gi
+  accessMode: ReadWriteOnce
+  mountPath: /usr/lib/mysql
+
+secret:
+  name: database-secret
+  data:
+    MYSQL_ROOT_PASSWORD: "Y2hhdDEyMw=="
+    MYSQL_DATABASE: "Y2hhdGZsb3c="
+    MYSQL_USER: "Y2hhdHVzZXI="
+    MYSQL_PASSWORD: "Y2hhdDEyMw=="
+
+configmap:
+  name: init-sql-configmap

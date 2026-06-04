@@ -1,0 +1,51 @@
+namespace: frontend
+
+image:
+  repository: 159749281332.dkr.ecr.ap-southeast-1.amazonaws.com/project-aws-gitops-frontend
+  tag: latest
+
+imagePullSecrets:
+  - name: ecr-secret
+
+replicaCount: 2
+
+resources:
+  limits:
+    memory: "128Mi"
+    cpu: "250m"
+  requests:
+    memory: "128Mi"
+    cpu: "250m"
+
+containerPort: 80
+
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 0
+    maxSurge: 1
+
+probes:
+  path: /
+  port: 80
+  initialDelaySeconds: 15
+  periodSeconds: 5
+
+service:
+  name: frontend-service
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  host: frontend.chatapp.com
+  path: "/"
+  pathType: Prefix
+
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 2
+  cpuUtilization: 50
+
+

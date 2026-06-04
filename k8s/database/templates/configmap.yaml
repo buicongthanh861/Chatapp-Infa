@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: init-sql-configmap
-  namespace: backend
+  name: {{ .Values.configmap.name }}
+  namespace: {{ .Values.namespace }}
 data:
   init.sql: |
     SET NAMES utf8mb4;
